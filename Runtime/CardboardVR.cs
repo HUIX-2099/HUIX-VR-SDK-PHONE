@@ -440,8 +440,23 @@ namespace HUIX.PhoneVR
             _showDivider = divider;
             _dividerColor = divColor;
             
-            // Create distortion material
-            _material = new Material(Shader.Find("Unlit/Texture"));
+            // Create material with a shader that always exists
+            Shader shader = Shader.Find("Unlit/Texture");
+            if (shader == null) shader = Shader.Find("UI/Default");
+            if (shader == null) shader = Shader.Find("Sprites/Default");
+            if (shader == null) shader = Shader.Find("Hidden/BlitCopy");
+            
+            if (shader != null)
+            {
+                _material = new Material(shader);
+            }
+            else
+            {
+                // Ultimate fallback - create minimal shader
+                _material = new Material(
+                    "Shader \"Hidden/VRBlit\" {" +
+                    "SubShader { Pass { SetTexture [_MainTex] { combine texture } } } }");
+            }
         }
         
         private void OnPostRender()
