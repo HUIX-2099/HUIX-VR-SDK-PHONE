@@ -1,0 +1,17 @@
+{
+    "name": "HUIX.PhoneVR.Samples",
+    "rootNamespace": "HUIX.PhoneVR.Samples",
+    "references": [
+        "HUIX.PhoneVR"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
+
