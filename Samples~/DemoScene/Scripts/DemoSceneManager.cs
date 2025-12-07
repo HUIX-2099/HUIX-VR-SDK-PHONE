@@ -6,15 +6,14 @@
  */
 
 using UnityEngine;
-using HUIX.PhoneVR;
-using HUIX.PhoneVR.Core;
-using HUIX.PhoneVR.UI;
 
 namespace HUIX.PhoneVR.Samples
 {
     /// <summary>
     /// Demo scene that showcases all HUIX Phone VR SDK features.
+    /// Attach this to the Main Camera for best results.
     /// </summary>
+    [AddComponentMenu("HUIX/Samples/Demo Scene Manager")]
     public class DemoSceneManager : MonoBehaviour
     {
         [Header("Demo Settings")]
@@ -26,12 +25,11 @@ namespace HUIX.PhoneVR.Samples
         [SerializeField] private Color _groundColor = new Color(0.2f, 0.2f, 0.25f);
         [SerializeField] private Color _accentColor = new Color(0.2f, 0.6f, 1f);
 
-        private HUIXVRManager _vrManager;
-        private HUIXVRRig _vrRig;
+        private Camera _mainCamera;
 
         private void Start()
         {
-            SetupVR();
+            SetupCamera();
             
             if (_autoCreateEnvironment)
             {
@@ -44,26 +42,21 @@ namespace HUIX.PhoneVR.Samples
             }
         }
 
-        private void SetupVR()
+        private void SetupCamera()
         {
-            // Find or create VR components
-            _vrManager = FindObjectOfType<HUIXVRManager>();
-            if (_vrManager == null)
+            // Use attached camera or find main camera
+            _mainCamera = GetComponent<Camera>();
+            if (_mainCamera == null)
             {
-                GameObject managerObj = new GameObject("HUIX VR Manager");
-                _vrManager = managerObj.AddComponent<HUIXVRManager>();
+                _mainCamera = Camera.main;
             }
 
-            _vrRig = FindObjectOfType<HUIXVRRig>();
-            if (_vrRig == null)
+            if (_mainCamera != null)
             {
-                GameObject rigObj = new GameObject("HUIX VR Rig");
-                _vrRig = rigObj.AddComponent<HUIXVRRig>();
+                // Set sky color
+                _mainCamera.backgroundColor = _skyColor;
+                _mainCamera.clearFlags = CameraClearFlags.SolidColor;
             }
-
-            // Set sky color
-            Camera.main.backgroundColor = _skyColor;
-            Camera.main.clearFlags = CameraClearFlags.SolidColor;
         }
 
         private void CreateDemoEnvironment()
@@ -288,26 +281,34 @@ namespace HUIX.PhoneVR.Samples
 
         private void Update()
         {
-            // Demo-specific updates
+            // Demo-specific updates - keyboard shortcuts for testing
             
-            // R key to recenter
+            // R key to recenter (reset camera rotation)
             if (Input.GetKeyDown(KeyCode.R))
             {
-                _vrManager?.Recenter();
+                if (_mainCamera != null)
+                {
+                    _mainCamera.transform.rotation = Quaternion.identity;
+                    Debug.Log("[HUIX Demo] View recentered");
+                }
             }
 
-            // V key to toggle VR mode
-            if (Input.GetKeyDown(KeyCode.V))
+            // Escape to quit demo
+            if (Input.GetKeyDown(KeyCode.Escape))
             {
-                _vrManager?.ToggleVRMode();
+                #if UNITY_EDITOR
+                UnityEditor.EditorApplication.isPlaying = false;
+                #else
+                Application.Quit();
+                #endif
             }
         }
     }
 
     /// <summary>
-    /// Demo interactable object
+    /// Demo interactable object - responds to gaze/click
     /// </summary>
-    public class DemoInteractable : MonoBehaviour, IHUIXInteractable
+    public class DemoInteractable : MonoBehaviour
     {
         private Renderer _renderer;
         private Material _material;
