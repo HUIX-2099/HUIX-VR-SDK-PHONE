@@ -1,0 +1,35 @@
+{
+  "name": "com.huix.phonevr",
+  "version": "1.0.0",
+  "displayName": "HUIX Phone VR SDK",
+  "description": "Transform any smartphone into a VR headset with stereoscopic rendering, head tracking, lens distortion correction, and immersive input systems.",
+  "unity": "2021.3",
+  "unityRelease": "0f1",
+  "documentationUrl": "https://github.com/huix/phone-vr-sdk",
+  "changelogUrl": "https://github.com/huix/phone-vr-sdk/blob/main/CHANGELOG.md",
+  "licensesUrl": "https://github.com/huix/phone-vr-sdk/blob/main/LICENSE.md",
+  "keywords": [
+    "vr",
+    "virtual-reality",
+    "phone-vr",
+    "cardboard",
+    "mobile-vr",
+    "stereoscopic",
+    "head-tracking",
+    "huix"
+  ],
+  "author": {
+    "name": "HUIX",
+    "email": "support@huix.dev",
+    "url": "https://huix.dev"
+  },
+  "type": "library",
+  "samples": [
+    {
+      "displayName": "Demo Scene",
+      "description": "A demo scene showcasing all HUIX Phone VR SDK features",
+      "path": "Samples~/DemoScene"
+    }
+  ]
+}
+

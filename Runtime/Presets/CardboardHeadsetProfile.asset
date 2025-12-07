@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0000000000000000e000000000000001, type: 3}
+  m_Name: CardboardHeadsetProfile
+  m_EditorClassIdentifier: HUIX.PhoneVR.Core.HeadsetProfile
+  ProfileName: Cardboard Style
+  Manufacturer: Generic Cardboard
+  Description: Profile optimized for Google Cardboard-style headsets with wider FOV
+  ScreenWidth: 0.11
+  ScreenHeight: 0.062
+  ScreenToLensDistance: 0.039
+  InterLensDistance: 64
+  IPD: 64
+  LensVerticalOffset: 0
+  FieldOfView: 90
+  VerticalFOVMultiplier: 1
+  EnableDistortionCorrection: 1
+  DistortionK1: 0.441
+  DistortionK2: 0.156
+  EnableChromaticCorrection: 1
+  ChromaticRed: -0.004
+  ChromaticGreen: 0
+  ChromaticBlue: 0.008
+  Brightness: 1
+  Contrast: 1
+  Saturation: 1
+

@@ -1,0 +1,19 @@
+{
+    "name": "HUIX.PhoneVR.Editor",
+    "rootNamespace": "HUIX.PhoneVR.Editor",
+    "references": [
+        "HUIX.PhoneVR"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
+
