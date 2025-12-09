@@ -1,8 +1,12 @@
 {
-    "name": "HUIX.PhoneVR",
-    "rootNamespace": "HUIX.PhoneVR",
-    "references": [],
-    "includePlatforms": [],
+    "name": "HUIX.VR.Editor",
+    "rootNamespace": "HUIX.VR.Editor",
+    "references": [
+        "HUIX.VR"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,
